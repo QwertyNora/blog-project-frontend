@@ -1,8 +1,21 @@
 import React, { useState } from "react";
-import { Divider, Space, Button, Form, Input, Checkbox, Modal } from "antd";
+import {
+  Divider,
+  Space,
+  Button,
+  Form,
+  Input,
+  Checkbox,
+  Modal,
+  ConfigProvider,
+  Typography,
+} from "antd";
 import { HeartTwoTone } from "@ant-design/icons";
 import Styles from "../styles/registerForm.module.css";
 import { registerUser } from "../services/auth.service";
+import SuccessAnimation from "../assets/animations/success";
+
+const { Text, Title, Paragraph } = Typography;
 
 const formItemLayout = {
   labelCol: {
@@ -35,10 +48,10 @@ function RegisterForm() {
 
   const onFinish = async (values) => {
     try {
-      const user = await registerUser(values); // Regiser user from services
+      const user = await registerUser(values); // Regiser user from services (auth.service.js)
       console.log("User registered:", user);
-      setUserData(user); // Assuming the response includes user data
-      setVisible(true); // Show the modal on success
+      setUserData(user);
+      setVisible(true);
     } catch (error) {
       console.error("Registration error:", error.response.data);
     }
@@ -184,24 +197,45 @@ function RegisterForm() {
             {...tailFormItemLayout}
           >
             <Checkbox>
-              I have read the <a href="">agreement</a>
+              I have read the{" "}
+              <a href="" style={{ color: "#eb2f96" }}>
+                agreement
+              </a>
             </Checkbox>
           </Form.Item>
 
           <Form.Item {...tailFormItemLayout}>
             <Divider orientation="right">
-              <Space>
-                <HeartTwoTone twoToneColor="#eb2f96" />
-                <Button type="primary" htmlType="submit">
-                  Register me!
-                </Button>
-              </Space>
+              <ConfigProvider
+                theme={{
+                  token: {
+                    // Seed Token
+                    colorPrimary: "#fff0f6",
+                    borderRadius: 3,
+
+                    // Alias Token
+                    colorBgContainer: "#fff0f6",
+                  },
+                }}
+              >
+                <Space>
+                  <HeartTwoTone twoToneColor="#eb2f96" />
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    style={{ borderColor: "#eb2f96", color: "#eb2f96" }}
+                  >
+                    Register me!
+                  </Button>
+                  <HeartTwoTone twoToneColor="#eb2f96" />
+                </Space>
+              </ConfigProvider>
             </Divider>
           </Form.Item>
         </Form>
       </div>
       <Modal
-        title="Registration Successful!"
+        // title="Registration Successful!"
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
@@ -218,10 +252,18 @@ function RegisterForm() {
           </Button>,
         ]}
       >
-        <p>
-          Welcome {userData?.username} a.k.a {userData?.fullName}
-        </p>
-        <p>Log in to be able to create and comment on other users posts!</p>
+        <SuccessAnimation />
+        <Space>
+          <Title level={2}>Registration Successful!</Title>
+        </Space>
+        <Paragraph>
+          You have successfully registered as a user on Blogerino!
+        </Paragraph>
+        <Paragraph>
+          Welcome
+          <Text keyboard>{userData?.username}</Text>. You can now log in and
+          start creating your own posts and comment on other users posts!
+        </Paragraph>
       </Modal>
     </>
   );

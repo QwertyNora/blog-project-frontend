@@ -8,7 +8,7 @@ import {
 import Post from "../components/post.component";
 import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
-import BlogerinoLogo from "../assets/Blogerino-2.png";
+import BlogerinoLogo from "../assets/Blogerino.svg";
 
 const { Content, Sider, Header } = Layout;
 

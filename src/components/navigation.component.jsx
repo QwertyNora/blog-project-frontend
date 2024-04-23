@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Menu, ConfigProvider } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import Styles from "../styles/navigation.module.css";
-import Blogerino from "../assets/Blogerino-6.png";
+import Blogerino from "../assets/Blogerino4.svg";
 
 const { Header } = Layout;
 

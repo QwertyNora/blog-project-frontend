@@ -3,6 +3,7 @@ import { Breadcrumb, Layout, theme } from "antd";
 import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
 import RegisterForm from "../components/registerForm.component";
+import BlogerinoColor from "../assets/Blogerino5.svg";
 
 const { Content } = Layout;
 
@@ -36,6 +37,7 @@ function Register() {
             }}
           >
             <RegisterForm />
+            <img src={BlogerinoColor} alt="Blogination Logoo" />
           </Content>
         </Layout>
       </Content>
