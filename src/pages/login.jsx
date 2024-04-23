@@ -2,11 +2,11 @@ import React from "react";
 import { Breadcrumb, Layout, theme } from "antd";
 import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
-import RegisterForm from "../components/registerForm.component";
+// import LoginForm from "../components/LoginForm.component";
 
 const { Content } = Layout;
 
-function Register() {
+function Login() {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -18,7 +18,7 @@ function Register() {
         <Breadcrumb style={{ margin: "16px 0" }}>
           <Breadcrumb.Item>Blogerino</Breadcrumb.Item>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>Register</Breadcrumb.Item>
+          <Breadcrumb.Item>Login</Breadcrumb.Item>
         </Breadcrumb>
         <Layout
           style={{
@@ -35,7 +35,7 @@ function Register() {
               flex: 1,
             }}
           >
-            <RegisterForm />
+            {/* <LoginForm /> */}
           </Content>
         </Layout>
       </Content>
@@ -44,4 +44,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;

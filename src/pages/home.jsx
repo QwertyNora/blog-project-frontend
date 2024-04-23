@@ -48,9 +48,8 @@ function Home() {
             margin: "16px 0",
           }}
         >
+          <Breadcrumb.Item>Blogerino</Breadcrumb.Item>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
         <a href="/">
           <img src={BlogerinoLogo} alt="Blogination Logoo" />
