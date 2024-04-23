@@ -1,8 +1,8 @@
 import React from "react";
 import { Breadcrumb, Layout, theme } from "antd";
-import Post from "../components/post.component";
 import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
+import RegisterForm from "../components/registerForm.component";
 
 const { Content } = Layout;
 
@@ -34,7 +34,7 @@ function Register() {
               flex: 1,
             }}
           >
-            <Post />
+            <RegisterForm />
           </Content>
         </Layout>
       </Content>
