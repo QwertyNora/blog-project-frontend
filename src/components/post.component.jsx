@@ -6,11 +6,9 @@ import { EditTwoTone, HeartTwoTone } from "@ant-design/icons";
 function Post() {
   const UserList = ["NS", "LT", "AK", "CE"];
   const ColorList = ["#ffdae9", "#ef97b4", "#fdb0c7", "#b7b4d2", "#d4a4"];
-  const GapList = [4, 3, 2, 1];
 
   const [user, setUser] = useState(UserList[0]);
   const [color, setColor] = useState(ColorList[0]);
-  const [gap, setGap] = useState(GapList[0]);
 
   // Set a random color when the component mounts
   useEffect(() => {
@@ -36,7 +34,6 @@ function Post() {
           <Avatar
             style={{ backgroundColor: color, verticalAlign: "middle" }}
             size="large"
-            gap={gap}
           >
             {user}
           </Avatar>

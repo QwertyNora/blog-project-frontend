@@ -10,7 +10,7 @@ import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
 import BlogerinoLogo from "../assets/Blogerino.svg";
 
-const { Content, Sider, Header } = Layout;
+const { Content, Sider } = Layout;
 
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
