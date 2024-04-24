@@ -49,12 +49,12 @@ function RegisterForm() {
 
   const onFinish = async (values) => {
     try {
-      const user = await registerUser(values); // Regiser user from services (auth.service.js)
-      console.log("User registered:", user);
-      setUserData(user);
+      const response = await registerUser(values);
+      console.log("User registered:", response.user); // Now logging the user details
+      setUserData(response.user); // Store the user data from the response
       setVisible(true);
     } catch (error) {
-      console.error("Registration error:", error.response.data);
+      console.error("Registration error:", error.response?.data);
     }
   };
 
@@ -199,7 +199,7 @@ function RegisterForm() {
           >
             <Checkbox>
               I have read the{" "}
-              <Link to="/404" style={{ color: "#eb2f96" }}>
+              <Link to="" style={{ color: "#eb2f96" }}>
                 agreement
               </Link>
             </Checkbox>
