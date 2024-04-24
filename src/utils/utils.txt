@@ -1,2 +1,0 @@
-In utils: 
-utility functions or helper modules that are used throughout the project
