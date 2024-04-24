@@ -1,0 +1,27 @@
+/* navigation.module.css */
+
+.LogoLink {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.CustomMenu {
+    flex: 1;
+    min-width: 0;
+    padding: 0 48px;
+    background-color: #ffdae9;
+}
+
+/* Style for menu items */
+.CustomMenu .ant-menu-item {
+    color: black;
+    /* Default text color */
+}
+
+/* Hover effect for menu items */
+.CustomMenu .ant-menu-item:hover {
+    background-color: #f7c6d7;
+    /* Lighter pink for hover */
+    color: white;
+    /* White text on hover */
+}
