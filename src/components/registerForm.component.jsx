@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Divider,
   Space,
@@ -198,9 +199,9 @@ function RegisterForm() {
           >
             <Checkbox>
               I have read the{" "}
-              <a href="" style={{ color: "#eb2f96" }}>
+              <Link to="/404" style={{ color: "#eb2f96" }}>
                 agreement
-              </a>
+              </Link>
             </Checkbox>
           </Form.Item>
 

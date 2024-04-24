@@ -1,14 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Breadcrumb, Layout, theme } from "antd";
 import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
-import RegisterForm from "../components/registerForm.component";
-import BlogerinoColor from "../assets/Blogerino5.svg";
+import NotFound from "../components/notFound.component";
 
 const { Content } = Layout;
 
-function Register() {
+function NotFoundPage() {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -20,7 +18,7 @@ function Register() {
         <Breadcrumb style={{ margin: "16px 0" }}>
           <Breadcrumb.Item>Blogerino</Breadcrumb.Item>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>Register</Breadcrumb.Item>
+          <Breadcrumb.Item>404 - NOT FOUND</Breadcrumb.Item>
         </Breadcrumb>
         <Layout
           style={{
@@ -37,8 +35,12 @@ function Register() {
               flex: 1,
             }}
           >
-            <RegisterForm />
-            <img src={BlogerinoColor} alt="Blogination Logoo" />
+            <h1>404 - NOT FOUND</h1>
+            <p>
+              The page you are looking for might have been removed, had its name
+              changed or is temporarily unavailable.
+            </p>
+            <NotFound />
           </Content>
         </Layout>
       </Content>
@@ -47,4 +49,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default NotFoundPage;
