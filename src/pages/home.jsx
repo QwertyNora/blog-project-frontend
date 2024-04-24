@@ -1,5 +1,5 @@
-import React from "react";
-import { Breadcrumb, Layout, theme, Menu } from "antd";
+import React, { useEffect, useState } from "react";
+import { Breadcrumb, Layout, theme, Menu, Pagination } from "antd";
 import {
   LaptopOutlined,
   NotificationOutlined,
@@ -9,6 +9,7 @@ import Post from "../components/post.component";
 import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
 import BlogerinoLogo from "../assets/Blogerino.svg";
+import { fetchPosts } from "../services/post.service";
 
 const { Content, Sider } = Layout;
 
@@ -31,9 +32,32 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
 );
 
 function Home() {
+  const [posts, setPosts] = useState([]);
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 0,
+  });
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const handleFetchPosts = async (page) => {
+    try {
+      const data = await fetchPosts(page);
+      setPosts(data.posts);
+      setPagination({
+        currentPage: data.currentPage,
+        totalPages: data.totalPages,
+      });
+    } catch (error) {
+      console.error("Failed to fetch posts:", error);
+    }
+  };
+
+  useEffect(() => {
+    handleFetchPosts(1); // Initial fetch for page 1
+  }, []);
 
   return (
     <Layout>
@@ -83,8 +107,16 @@ function Home() {
               minHeight: 280,
             }}
           >
-            Content
-            <Post />
+            <h2>Latest Posts</h2>
+            {posts.map((post) => (
+              <Post key={post._id} title={post.title} content={post.content} />
+              // Ensure that Post component is set up to receive and display these props
+            ))}
+            <Pagination
+              current={pagination.currentPage}
+              total={pagination.totalPages * 10} // total number of pages times 10 (since default pageSize is 10)
+              onChange={(page) => handleFetchPosts(page)}
+            />
           </Content>
         </Layout>
       </Content>

@@ -3,7 +3,7 @@ import { Divider, Space, Avatar, Button } from "antd";
 import Styles from "../styles/post.module.css";
 import { EditTwoTone, HeartTwoTone } from "@ant-design/icons";
 
-function Post() {
+function Post({ title, content }) {
   const UserList = ["NS", "LT", "AK", "CE"];
   const ColorList = ["#ffdae9", "#ef97b4", "#fdb0c7", "#b7b4d2", "#d4a4"];
 
@@ -44,13 +44,9 @@ function Post() {
           >
             Change user
           </Button>
-          Title
+          {title}
         </Divider>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
-          merninisti licere mihi ista probare, quae sunt a te dicta? Refert
-          tamen, quo modo.
-        </p>
+        <p>{content}</p>
         <Divider orientation="right">
           <Space>
             <HeartTwoTone twoToneColor="#eb2f96" />
