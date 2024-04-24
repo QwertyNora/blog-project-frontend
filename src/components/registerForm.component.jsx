@@ -199,7 +199,7 @@ function RegisterForm() {
           >
             <Checkbox>
               I have read the{" "}
-              <Link to="" style={{ color: "#eb2f96" }}>
+              <Link to="/404" style={{ color: "#eb2f96" }}>
                 agreement
               </Link>
             </Checkbox>

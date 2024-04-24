@@ -23,22 +23,21 @@ function LoginForm() {
       setLoading(true);
       const response = await loginUser(values);
       console.log("Login successful:", response);
-      // Configure modal for success
+      localStorage.setItem("token", response.access);
       setModal({
         visible: true,
         title: "Login Successful!",
         content: "You have successfully logged in to the system.",
-        style: { color: "#52c41a" }, // Green text
+        style: { color: "#52c41a" },
       });
-      form.resetFields(); // Clear form fields
+      form.resetFields();
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
-      // Configure modal for failure
       setModal({
         visible: true,
         title: "Login Not Successful",
         content: "Credentials missing or invalid.",
-        style: { color: "#ff4d4f" }, // Red text
+        style: { color: "#ff4d4f" },
       });
       form.resetFields(); // Clear form fields even on failure
     } finally {

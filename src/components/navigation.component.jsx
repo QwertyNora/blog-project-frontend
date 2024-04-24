@@ -10,6 +10,7 @@ const items = [
   { key: "1", label: "Home", path: "/" },
   { key: "2", label: "Register", path: "/auth/register" },
   { key: "3", label: "Login", path: "/auth/login" },
+  { key: "4", label: "Create Post", path: "/create-post" },
 ];
 
 function Navigation() {
