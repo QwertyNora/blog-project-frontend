@@ -2,7 +2,7 @@ import React from "react";
 import { Breadcrumb, Layout, theme } from "antd";
 import MyFooter from "../components/footer.component";
 import Navigation from "../components/navigation.component";
-// import LoginForm from "../components/LoginForm.component";
+import LoginForm from "../components/loginForm.component";
 
 const { Content } = Layout;
 
@@ -35,7 +35,7 @@ function Login() {
               flex: 1,
             }}
           >
-            {/* <LoginForm /> */}
+            <LoginForm />
           </Content>
         </Layout>
       </Content>

@@ -249,7 +249,7 @@ function RegisterForm() {
               window.location.href = "/login"; // Redirect to login page or handle the routing
             }}
           >
-            Log in
+            Go to Log in
           </Button>,
         ]}
       >
