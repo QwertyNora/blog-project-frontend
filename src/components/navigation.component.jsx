@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Layout, Menu, ConfigProvider } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import Styles from "../styles/navigation.module.css";
 import Blogerino from "../assets/Blogerino4.svg";
+import Logo from "../assets/Blogerino-Logo.svg";
 
 const { Header } = Layout;
 
@@ -33,10 +34,14 @@ function Navigation() {
           display: "flex",
           alignItems: "center",
           backgroundColor: "#ffdae9",
+          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.1)",
         }}
       >
+        <a href="/" className={Styles.Logo}>
+          <img src={Logo} alt="Blogination Logo" style={{ width: "100px" }} />
+        </a>
         <a href="/" className={Styles.LogoLink}>
-          <img src={Blogerino} alt="Blogination Logo" />
+          <img src={Blogerino} alt="Blogination Text Logo" />
         </a>
         <Menu
           theme="light"
@@ -50,8 +55,13 @@ function Navigation() {
           className={Styles.CustomMenu}
         >
           {items.map((item) => (
-            <Menu.Item key={item.key}>
-              <Link to={item.path}>{item.label}</Link>
+            <Menu.Item
+              key={item.key}
+              style={{ color: "black", fontSize: "16px", fontWeight: "400" }}
+            >
+              <Link to={item.path} style={{ color: "inherit" }}>
+                {item.label}
+              </Link>
             </Menu.Item>
           ))}
         </Menu>

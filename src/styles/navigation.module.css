@@ -1,8 +1,15 @@
 /* navigation.module.css */
+.Logo {
+    display: flex;
+    margin-top: 1rem;
+    box-shadow: none;
+    width: 20px;
+}
 
 .LogoLink {
     display: flex;
     margin-top: 1rem;
+    box-shadow: none;
 }
 
 .CustomMenu {
@@ -12,16 +19,14 @@
     background-color: #ffdae9;
 }
 
-/* Style for menu items */
-.CustomMenu .ant-menu-item {
-    color: black;
-    /* Default text color */
+.CustomMenu .ant-menu-horizontal>.ant-menu-item {
+    color: black !important;
+    font-size: 18px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
 }
 
-/* Hover effect for menu items */
-.CustomMenu .ant-menu-item:hover {
-    background-color: #f7c6d7;
-    /* Lighter pink for hover */
-    color: white;
-    /* White text on hover */
+.CustomMenu .ant-menu-horizontal>.ant-menu-item:hover {
+    background-color: #f7c6d7 !important;
+    color: white !important;
 }

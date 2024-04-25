@@ -6,11 +6,14 @@ import Login from "./pages/login";
 import NotFoundPage from "./pages/notFound";
 import CreatePost from "./pages/createPost";
 import "./App.css";
+import "./styles/navigation.module.css";
+import Navigation from "./components/navigation.component";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <Navigation />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/auth/register" element={<Register />} />

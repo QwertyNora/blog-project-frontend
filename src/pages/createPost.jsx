@@ -1,8 +1,6 @@
 import React from "react";
 import { Breadcrumb, Layout, theme } from "antd";
 import MyFooter from "../components/footer.component";
-import Navigation from "../components/navigation.component";
-import LoginForm from "../components/loginForm.component";
 import CreatePostForm from "../components/createPostForm";
 
 const { Content } = Layout;
@@ -14,7 +12,6 @@ function CreatePost() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Navigation />
       <Content style={{ padding: "0 48px", flex: 1 }}>
         <Breadcrumb style={{ margin: "16px 0" }}>
           <Breadcrumb.Item>Blogerino</Breadcrumb.Item>

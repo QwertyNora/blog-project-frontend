@@ -7,7 +7,6 @@ import {
 } from "@ant-design/icons";
 import Post from "../components/post.component";
 import MyFooter from "../components/footer.component";
-import Navigation from "../components/navigation.component";
 import BlogerinoLogo from "../assets/Blogerino.svg";
 import { fetchPosts } from "../services/post.service";
 
@@ -61,7 +60,6 @@ function Home() {
 
   return (
     <Layout>
-      <Navigation />
       <Content
         style={{
           padding: "0 48px",
