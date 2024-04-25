@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  background-image: url('./assets/wickedbackground-2.svg') !important;
+  background-size: cover !important;
+  /* or contain depending on your need */
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
+}
+
+
+.ant-layout {
+  background: none;
 }
 
 .App-logo {
@@ -32,6 +43,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

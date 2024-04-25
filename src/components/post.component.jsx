@@ -1,49 +1,62 @@
 import React, { useState, useEffect } from "react";
-import { Divider, Space, Avatar, Button } from "antd";
+import { Divider, Space, Avatar } from "antd";
 import Styles from "../styles/post.module.css";
 import { EditTwoTone, HeartTwoTone } from "@ant-design/icons";
 
-function Post({ title, content }) {
-  const UserList = ["NS", "LT", "AK", "CE"];
-  const ColorList = ["#ffdae9", "#ef97b4", "#fdb0c7", "#b7b4d2", "#d4a4"];
+function Post({ title, content, createdBy }) {
+  const getInitials = (firstName, lastName) => {
+    return `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`;
+  };
 
-  const [user, setUser] = useState(UserList[0]);
+  const initials = createdBy
+    ? getInitials(createdBy.firstName, createdBy.lastName)
+    : "??";
+
+  const ColorList = [
+    "#ffdae9",
+    "#ef97b4",
+    "#b3ff66",
+    "#fdb0c7",
+    "#b7b4d2",
+    "#ffc2d1",
+    "#fb6f92",
+    "#809bce",
+    "#b8e0d2",
+    "#ffee93",
+    "#f68c70",
+    "#f6ac69",
+    "#f6bc66",
+    "#cdb4db",
+    "#ffc8dd",
+    "#ffafcc",
+    "#bde0fe",
+    "#a2d2ff",
+  ];
+
   const [color, setColor] = useState(ColorList[0]);
 
-  // Set a random color when the component mounts
   useEffect(() => {
-    const randomColor = getRandomColor();
-    setColor(randomColor);
+    const getRandomColor = () => {
+      const randomIndex = Math.floor(Math.random() * ColorList.length);
+      return ColorList[randomIndex];
+    };
+    setColor(getRandomColor());
   }, []);
-
-  const getRandomColor = () => {
-    const randomIndex = Math.floor(Math.random() * ColorList.length);
-    return ColorList[randomIndex];
-  };
-
-  const changeUser = () => {
-    const index = UserList.indexOf(user);
-    setUser(index < UserList.length - 1 ? UserList[index + 1] : UserList[0]);
-    setColor(getRandomColor()); // Set a new random color
-  };
 
   return (
     <>
       <div className={Styles.PostWrapper}>
         <Divider orientation="left">
           <Avatar
-            style={{ backgroundColor: color, verticalAlign: "middle" }}
+            style={{
+              backgroundColor: color,
+              verticalAlign: "middle",
+              marginRight: "16px",
+            }}
             size="large"
           >
-            {user}
+            {initials}
           </Avatar>
-          <Button
-            size="small"
-            style={{ margin: "0 16px", verticalAlign: "middle" }}
-            onClick={changeUser}
-          >
-            Change user
-          </Button>
           {title}
         </Divider>
         <p>{content}</p>

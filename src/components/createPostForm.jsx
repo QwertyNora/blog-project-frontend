@@ -1,11 +1,11 @@
 import React from "react";
 import { Form, Input, Button, message } from "antd";
 import { useNavigate } from "react-router-dom";
-import { createPost } from "../services/post.service"; // Make sure the path is correct
+import { createPost } from "../services/post.service";
 
 const CreatePostForm = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token"); // Retrieve the token from local storage
+  const token = localStorage.getItem("token"); // Still needed for checking login state
 
   const onFinish = async (values) => {
     if (!token) {
@@ -16,12 +16,12 @@ const CreatePostForm = () => {
     try {
       await createPost(values); // Using createPost from post.service.js
       message.success("Post created successfully");
-      navigate("/"); // Redirect or update UI
+      navigate("/");
     } catch (error) {
-      const errMsg = error.response
+      const errorMessage = error.response
         ? error.response.data.message
         : error.message;
-      message.error(`Failed to create post: ${errMsg}`);
+      message.error(`Failed to create post: ${errorMessage}`);
     }
   };
 

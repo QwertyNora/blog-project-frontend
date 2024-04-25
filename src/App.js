@@ -5,6 +5,7 @@ import Register from "./pages/register";
 import Login from "./pages/login";
 import NotFoundPage from "./pages/notFound";
 import CreatePost from "./pages/createPost";
+import "./App.css";
 
 function App() {
   return (

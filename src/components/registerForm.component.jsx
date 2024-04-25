@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Divider,
   Space,
@@ -46,6 +46,8 @@ function RegisterForm() {
   const [form] = Form.useForm();
   const [visible, setVisible] = useState(false);
   const [userData, setUserData] = useState(null);
+
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     try {
@@ -246,7 +248,7 @@ function RegisterForm() {
             type="primary"
             onClick={() => {
               setVisible(false);
-              window.location.href = "/login"; // Redirect to login page or handle the routing
+              navigate("/auth/login");
             }}
           >
             Go to Log in

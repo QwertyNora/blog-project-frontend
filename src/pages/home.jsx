@@ -78,6 +78,7 @@ function Home() {
         <a href="/">
           <img src={BlogerinoLogo} alt="Blogination Logoo" />
         </a>
+
         <Layout
           style={{
             padding: "24px 0",
@@ -109,7 +110,12 @@ function Home() {
           >
             <h2>Latest Posts</h2>
             {posts.map((post) => (
-              <Post key={post._id} title={post.title} content={post.content} />
+              <Post
+                key={post._id}
+                title={post.title}
+                content={post.content}
+                createdBy={post.createdBy}
+              />
               // Ensure that Post component is set up to receive and display these props
             ))}
             <Pagination
