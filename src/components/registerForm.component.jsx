@@ -49,14 +49,25 @@ function RegisterForm() {
 
   const navigate = useNavigate();
 
-  const onFinish = async (values) => {
+  const onFinish = async (values, ...rest) => {
     try {
       const response = await registerUser(values);
-      console.log("User registered:", response.user); // Now logging the user details
-      setUserData(response.user); // Store the user data from the response
+      console.log("User registered:", response.user);
+      setUserData(response.user);
       setVisible(true);
     } catch (error) {
       console.error("Registration error:", error.response?.data);
+      console.log(values, rest);
+      const errors = error.response?.data.errors;
+      if (errors) {
+        const errorFields = Object.keys(errors).map((key) => {
+          return {
+            name: key,
+            errors: [errors[key]],
+          };
+        });
+        form.setFields(errorFields);
+      }
     }
   };
 

@@ -48,3 +48,16 @@ export const createPost = async (postData) => {
     throw error.message;
   }
 };
+
+// Function to create a new comment for a post
+export const createComment = async (postId, commentData) => {
+  try {
+    const response = await api.post(
+      `/api/posts/${postId}/comments`,
+      commentData
+    );
+    return response.data;
+  } catch (error) {
+    throw error.message;
+  }
+};

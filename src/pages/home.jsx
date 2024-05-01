@@ -110,6 +110,7 @@ function Home() {
             {posts.map((post) => (
               <Post
                 key={post._id}
+                postId={post._id}
                 title={post.title}
                 content={post.content}
                 createdBy={post.createdBy}
