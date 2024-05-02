@@ -84,7 +84,7 @@ function Home() {
             borderRadius: borderRadiusLG,
           }}
         >
-          <Sider
+          {/* <Sider
             style={{
               background: colorBgContainer,
             }}
@@ -99,7 +99,7 @@ function Home() {
               }}
               items={items2}
             />
-          </Sider>
+          </Sider> */}
           <Content
             style={{
               padding: "0 24px",

@@ -52,3 +52,24 @@ const CreatePostForm = () => {
 };
 
 export default CreatePostForm;
+
+const ColorList = [
+  "#ffdae9",
+  "#ef97b4",
+  "#b3ff66",
+  "#fdb0c7",
+  "#b7b4d2",
+  "#ffc2d1",
+  "#fb6f92",
+  "#809bce",
+  "#b8e0d2",
+  "#ffee93",
+  "#f68c70",
+  "#f6ac69",
+  "#f6bc66",
+  "#cdb4db",
+  "#ffc8dd",
+  "#ffafcc",
+  "#bde0fe",
+  "#a2d2ff",
+];

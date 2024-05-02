@@ -1,6 +1,7 @@
 import React from "react";
 import { Avatar, Space } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import Styles from "../styles/comment.module.css";
 
 function CommentComponent({ comment }) {
   const initials = `${comment.createdBy.firstName[0]}${comment.createdBy.lastName[0]}`;
@@ -10,7 +11,8 @@ function CommentComponent({ comment }) {
 
   return (
     <div
-      style={{ padding: "10px", border: "1px solid #ccc", marginTop: "10px" }}
+      //   style={{ padding: "10px", border: "1px solid #ccc", marginTop: "10px" }}
+      className={Styles.CommentWrapper}
     >
       <Space>
         <Avatar style={{ backgroundColor }} icon={<UserOutlined />} />
