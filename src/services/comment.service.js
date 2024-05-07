@@ -51,6 +51,7 @@ export const deleteComment = async (postId, commentId) => {
     );
     return response.data;
   } catch (error) {
-    throw error.message;
+    console.error(`Failed to delete comment: ${error.message}`);
+    throw error;
   }
 };

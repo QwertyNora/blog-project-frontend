@@ -20,17 +20,17 @@ import CommentComponent from "./comment.component";
 import {
   createComment,
   fetchCommentsByPost,
+  deleteComment,
 } from "../services/comment.service";
 import localStorageKit from "../utils/localStorageKit";
 import { deletePost } from "../services/post.service";
 
-function Post({ title, content, createdBy, postId, onPostDeleted }) {
+function Post({ title, content, createdBy, postId, onPostDeleted, isAdmin }) {
   const [comments, setComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [commentText, setCommentText] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const isAdmin = localStorage.getItem("isAdmin") === "true";
 
   const ColorList = [
     "#ffdae9",
@@ -115,6 +115,18 @@ function Post({ title, content, createdBy, postId, onPostDeleted }) {
     setShowComments(!showComments);
   };
 
+  const handleDeleteComment = async (commentId) => {
+    console.log(`Deleting comment ${commentId} for post ${postId}`);
+    try {
+      await deleteComment(postId, commentId);
+      setComments(comments.filter((comment) => comment._id !== commentId));
+      message.success("Comment deleted successfully");
+    } catch (error) {
+      message.error("Failed to delete comment");
+      console.error(error);
+    }
+  };
+
   return (
     <div className={Styles.PostWrapper}>
       <Divider orientation="left">
@@ -151,7 +163,12 @@ function Post({ title, content, createdBy, postId, onPostDeleted }) {
       </Divider>
       {showComments &&
         comments.map((comment, index) => (
-          <CommentComponent key={index} comment={comment} />
+          <CommentComponent
+            key={index}
+            comment={comment}
+            onDeleteComment={handleDeleteComment}
+            isAdmin={isAdmin}
+          />
         ))}
       <Modal
         title="Leave your comment!"

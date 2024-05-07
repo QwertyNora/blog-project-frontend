@@ -1,9 +1,9 @@
 import React from "react";
-import { Avatar, Space } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Avatar, Space, Button } from "antd";
+import { UserOutlined, DeleteOutlined } from "@ant-design/icons";
 import Styles from "../styles/comment.module.css";
 
-function CommentComponent({ comment }) {
+function CommentComponent({ comment, onDeleteComment, isAdmin }) {
   const createdBy = comment.createdBy || { firstName: "Unknown", lastName: "" };
   const initials = `${createdBy.firstName[0]}${createdBy.lastName[0]}`;
   const backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(
@@ -11,10 +11,7 @@ function CommentComponent({ comment }) {
   )}`; // Generates a random color
 
   return (
-    <div
-      //   style={{ padding: "10px", border: "1px solid #ccc", marginTop: "10px" }}
-      className={Styles.CommentWrapper}
-    >
+    <div className={Styles.CommentWrapper}>
       <Space>
         <Avatar style={{ backgroundColor }} icon={<UserOutlined />} />
         <p>
@@ -24,7 +21,24 @@ function CommentComponent({ comment }) {
           </strong>
         </p>
       </Space>
-      <p>{comment.content}</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <p>{comment.content}</p>
+        {isAdmin && (
+          <Button
+            icon={<DeleteOutlined />}
+            onClick={() => onDeleteComment(comment._id)}
+            style={{ width: "fit-content" }}
+          >
+            Delete Comment
+          </Button>
+        )}
+      </div>
     </div>
   );
 }

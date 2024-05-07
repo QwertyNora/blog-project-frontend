@@ -31,6 +31,7 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
 );
 
 function Home() {
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
   const [posts, setPosts] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -118,7 +119,8 @@ function Home() {
                 title={post.title}
                 content={post.content}
                 createdBy={post.createdBy}
-                onPostDeleted={handlePostDeleted} // Pass the callback function as a prop
+                onPostDeleted={handlePostDeleted}
+                isAdmin={isAdmin} // Assuming isAdmin is determined at a higher level
               />
             ))}
             <Pagination
