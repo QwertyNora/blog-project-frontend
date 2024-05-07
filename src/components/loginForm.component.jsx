@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import Styles from "../styles/registerForm.module.css";
 import { loginUser } from "../services/auth.service";
+import LoginSuccessAnimation from "../assets/animations/loginSuccess";
 
 function LoginForm() {
   const [form] = Form.useForm();
@@ -27,8 +28,8 @@ function LoginForm() {
       localStorage.setItem("isAdmin", response.user.admin);
       setModal({
         visible: true,
-        title: "Login Successful!",
-        content: "You have successfully logged in to the system.",
+        title: <div style={{ textAlign: "center" }}>Login Successful!</div>, // Centering the title
+        content: "",
         style: { color: "#52c41a" },
       });
       form.resetFields();
@@ -36,7 +37,7 @@ function LoginForm() {
       console.error("Login error:", error.response?.data || error.message);
       setModal({
         visible: true,
-        title: "Login Not Successful",
+        title: <div style={{ textAlign: "center" }}>Login Not Successful</div>, // Centering the title
         content: "Credentials missing or invalid.",
         style: { color: "#ff4d4f" },
       });
@@ -105,6 +106,7 @@ function LoginForm() {
         ]}
         bodyStyle={modal.style}
       >
+        <LoginSuccessAnimation />
         <p>{modal.content}</p>
       </Modal>
     </>
