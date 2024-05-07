@@ -9,7 +9,12 @@ import {
   message,
   Badge,
 } from "antd";
-import { EditTwoTone, HeartTwoTone, MessageOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  EditTwoTone,
+  HeartTwoTone,
+  MessageOutlined,
+} from "@ant-design/icons";
 import Styles from "../styles/post.module.css";
 import CommentComponent from "./comment.component";
 import {
@@ -17,13 +22,15 @@ import {
   fetchCommentsByPost,
 } from "../services/comment.service";
 import localStorageKit from "../utils/localStorageKit";
+import { deletePost } from "../services/post.service";
 
-function Post({ title, content, createdBy, postId }) {
+function Post({ title, content, createdBy, postId, onPostDeleted }) {
   const [comments, setComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [commentText, setCommentText] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
 
   const ColorList = [
     "#ffdae9",
@@ -45,6 +52,17 @@ function Post({ title, content, createdBy, postId }) {
     "#bde0fe",
     "#a2d2ff",
   ];
+
+  const handleDeletePost = async () => {
+    try {
+      await deletePost(postId);
+      message.success("Post deleted successfully");
+      onPostDeleted(); // Call the callback function after successful deletion
+    } catch (error) {
+      console.log(error, error.message);
+      message.error("Failed to delete post");
+    }
+  };
 
   useEffect(() => {
     fetchCommentsByPost(postId).then(setComments).catch(console.error);
@@ -80,7 +98,10 @@ function Post({ title, content, createdBy, postId }) {
     }
     try {
       const result = await createComment(postId, { content: commentText });
-      setComments([...comments, result]);
+      if (!result.createdBy) {
+        result.createdBy = { firstName: "Default", lastName: "User" };
+      }
+      setComments((prevComments) => [...prevComments, result]);
       setCommentText("");
       setIsModalVisible(false);
       message.success("Comment added successfully");
@@ -121,6 +142,11 @@ function Post({ title, content, createdBy, postId }) {
           >
             Show Comments <Badge count={comments.length} showZero />
           </Button>
+          {isAdmin && (
+            <Button icon={<DeleteOutlined />} onClick={handleDeletePost}>
+              Delete Post
+            </Button>
+          )}
         </Space>
       </Divider>
       {showComments &&
@@ -153,5 +179,3 @@ function Post({ title, content, createdBy, postId }) {
 }
 
 export default Post;
-
-//TODO: Use the random to generate random color each time component is loaded.

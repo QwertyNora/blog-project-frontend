@@ -4,7 +4,8 @@ import { UserOutlined } from "@ant-design/icons";
 import Styles from "../styles/comment.module.css";
 
 function CommentComponent({ comment }) {
-  const initials = `${comment.createdBy.firstName[0]}${comment.createdBy.lastName[0]}`;
+  const createdBy = comment.createdBy || { firstName: "Unknown", lastName: "" };
+  const initials = `${createdBy.firstName[0]}${createdBy.lastName[0]}`;
   const backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(
     16
   )}`; // Generates a random color

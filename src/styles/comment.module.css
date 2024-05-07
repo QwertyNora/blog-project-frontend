@@ -3,6 +3,11 @@
     flex-direction: column;
     width: 60%;
     padding: 1.2rem;
-    box-shadow: 0px 4px 15px -3px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 4px 15px -3px rgba(0, 0, 0, 0.1); */
+    background: #ffffff;
+    line-height: 1.3em;
+    border: 2px dashed #d6cac9;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px #ffffff, rgba(0, 0, 0, 0.25) 0px 5px 15px;
     margin: 1.5rem;
 }

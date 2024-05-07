@@ -23,7 +23,8 @@ function LoginForm() {
       setLoading(true);
       const response = await loginUser(values);
       console.log("Login successful:", response);
-      localStorage.setItem("token", response.access);
+      localStorage.setItem("token", response.tokens.access);
+      localStorage.setItem("isAdmin", response.user.admin);
       setModal({
         visible: true,
         title: "Login Successful!",

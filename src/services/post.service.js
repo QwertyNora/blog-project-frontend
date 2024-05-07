@@ -61,3 +61,14 @@ export const createComment = async (postId, commentData) => {
     throw error.message;
   }
 };
+
+// Function to delete post by ID
+export const deletePost = async (postId) => {
+  try {
+    const response = await api.delete(`/api/posts/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error, error.message);
+    throw error.message;
+  }
+};

@@ -28,7 +28,8 @@ export const createComment = async (postId, commentData) => {
     );
     return response.data;
   } catch (error) {
-    throw error; // It's often more useful to throw the whole error to capture stack traces.
+    console.error("Error creating comment:", error);
+    throw error; // Rethrow or handle as needed
   }
 };
 
@@ -39,5 +40,17 @@ export const fetchCommentsByPost = async (postId) => {
     return response.data;
   } catch (error) {
     throw error;
+  }
+};
+
+// Function to delete a comment by ID
+export const deleteComment = async (postId, commentId) => {
+  try {
+    const response = await api.delete(
+      `/api/posts/${postId}/comments/${commentId}`
+    );
+    return response.data;
+  } catch (error) {
+    throw error.message;
   }
 };

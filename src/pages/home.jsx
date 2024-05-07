@@ -54,6 +54,10 @@ function Home() {
     }
   };
 
+  const handlePostDeleted = () => {
+    handleFetchPosts(pagination.currentPage); // Re-fetch posts on the current page
+  };
+
   useEffect(() => {
     handleFetchPosts(1); // Initial fetch for page 1
   }, []);
@@ -114,8 +118,8 @@ function Home() {
                 title={post.title}
                 content={post.content}
                 createdBy={post.createdBy}
+                onPostDeleted={handlePostDeleted} // Pass the callback function as a prop
               />
-              // Ensure that Post component is set up to receive and display these props
             ))}
             <Pagination
               current={pagination.currentPage}
