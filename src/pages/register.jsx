@@ -13,32 +13,49 @@ function Register() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Content style={{ padding: "0 48px", flex: 1 }}>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Blogerino</Breadcrumb.Item>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>Register</Breadcrumb.Item>
-        </Breadcrumb>
-        <Layout
+      <Breadcrumb style={{ margin: "16px 25px" }}>
+        <Breadcrumb.Item>Blogerino</Breadcrumb.Item>
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item>Register</Breadcrumb.Item>
+      </Breadcrumb>
+      <div
+        style={{
+          padding: "0 48px",
+          flex: "1 0 auto",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Content
           style={{
-            padding: "24px 0",
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
+            padding: "0 48px",
             flex: 1,
+            width: "700px",
+            maxWidth: "900px",
           }}
         >
-          <Content
+          <Layout
             style={{
-              padding: "0 24px",
-              minHeight: 280,
+              padding: "24px 0",
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
               flex: 1,
             }}
           >
-            <RegisterForm />
-            <img src={BlogerinoColor} alt="Blogination Logoo" />
-          </Content>
-        </Layout>
-      </Content>
+            <Content
+              style={{
+                padding: "0 24px",
+                minHeight: 280,
+                flex: 1,
+              }}
+            >
+              <RegisterForm />
+            </Content>
+          </Layout>
+        </Content>
+      </div>
       <MyFooter />
     </Layout>
   );
