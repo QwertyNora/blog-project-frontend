@@ -21,15 +21,9 @@ function CommentComponent({ comment, onDeleteComment, isAdmin }) {
           </strong>
         </p>
       </Space>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <p>{comment.content}</p>
-        {isAdmin && (
+      <p>{comment.content}</p>
+      {isAdmin && (
+        <div style={{ textAlign: "right" }}>
           <Button
             icon={<DeleteOutlined />}
             onClick={() => onDeleteComment(comment._id)}
@@ -37,8 +31,8 @@ function CommentComponent({ comment, onDeleteComment, isAdmin }) {
           >
             Delete Comment
           </Button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
